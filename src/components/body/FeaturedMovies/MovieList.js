@@ -6,21 +6,23 @@ class MovieList extends Component {
     constructor(props) {
         super(props);
     }
-    state = { 
+    state = {
         FeaturedMoviesList:[]
      }
 
+    //skips elements that are already shown by list in recommended movies
     isntOnTop(element,index)
     {
         let isBigger = index > 4?  true:false;
         return isBigger;
     }
 
+    //triggers when movieList prop updates
     componentDidUpdate(prevProps) {
         if (prevProps.MovieList !== this.props.MovieList) {
-            let featuredMovies = this.props.MovieList.filter(this.isntOnTop)
+            //filter list if the list is not used for searching results
+            let featuredMovies = this.props.ShowingSearchResults? this.props.MovieList: this.props.MovieList.filter(this.isntOnTop);
             this.setState({ FeaturedMoviesList: featuredMovies });
-            console.log(featuredMovies);
         }
     }
 

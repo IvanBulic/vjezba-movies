@@ -9,7 +9,7 @@ class FeaturedMoviesSectionTitle extends Component {
     state = {  }
     render() { 
         return ( <FeaturedMoviesTitleDiv>
-            <FeaturedMoviesTitle>WATCH FEATURED MOVIES</FeaturedMoviesTitle>
+            <FeaturedMoviesTitle>{this.props.TitleText}</FeaturedMoviesTitle>
         </FeaturedMoviesTitleDiv> );
     }
 }
