@@ -32,14 +32,10 @@ class MovieList extends Component {
 
 
     render() { 
-        if (this.state.moviesLoaded) {
-            return ( 
-                <MovieListDiv>
-                {this.state.FeaturedMoviesList.map((element,index)=><VerticalCard key={index} Movie={element}/>)}
-            </MovieListDiv> );
-        }
-        return <></>;
- 
+        return ( 
+            <MovieListDiv>
+            {this.state.FeaturedMoviesList.map((element,index)=><VerticalCard key={index} Movie={element}/>)}
+        </MovieListDiv> );
     }
 }
  
