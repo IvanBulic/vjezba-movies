@@ -7,7 +7,8 @@ class MovieList extends Component {
         super(props);
     }
     state = {
-        FeaturedMoviesList:[]
+        FeaturedMoviesList:[],
+        moviesLoaded:false
      }
 
     //skips elements that are already shown by list in recommended movies
@@ -22,16 +23,23 @@ class MovieList extends Component {
         if (prevProps.MovieList !== this.props.MovieList) {
             //filter list if the list is not used for searching results
             let featuredMovies = this.props.ShowingSearchResults? this.props.MovieList: this.props.MovieList.filter(this.isntOnTop);
-            this.setState({ FeaturedMoviesList: featuredMovies });
+            this.setState({ 
+                FeaturedMoviesList: featuredMovies,
+                moviesLoaded:true
+             });
         }
     }
 
 
     render() { 
-        return ( 
-        <MovieListDiv>
+        if (this.state.moviesLoaded) {
+            return ( 
+                <MovieListDiv>
                 {this.state.FeaturedMoviesList.map((element,index)=><VerticalCard key={index} Movie={element}/>)}
-        </MovieListDiv> );
+            </MovieListDiv> );
+        }
+        return <></>;
+ 
     }
 }
  

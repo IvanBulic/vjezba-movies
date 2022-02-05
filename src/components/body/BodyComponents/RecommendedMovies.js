@@ -7,28 +7,35 @@ class RecommendedMovies extends Component {
     constructor(props) {
         super(props);
     }
-    state = {  }
+    state = {  moviesLoaded:false }
+
 
     componentDidUpdate(prevProps) {
-        if (prevProps.MovieList !== this.props.MovieList) {
 
+        if (prevProps.MovieList !== this.props.MovieList) {
+           this.setState({  moviesLoaded:true  });
         }
     }
 
     render() { 
-        return ( <HorizontalCardContainerDiv>
-            <HorizontalCardDivOrganizer>
-                <HorizontalCard Movie={this.props.MovieList[0]}/>
-            </HorizontalCardDivOrganizer>
-            <HorizontalCardDivOrganizer>
-                <HorizontalCard Movie={this.props.MovieList[1]}/>
-                <HorizontalCard Movie={this.props.MovieList[2]}/>
-            </HorizontalCardDivOrganizer>
-            <HorizontalCardDivOrganizer>
-                <HorizontalCard Movie={this.props.MovieList[3]}/>
-                <HorizontalCard Movie={this.props.MovieList[4]}/>
-            </HorizontalCardDivOrganizer>
-        </HorizontalCardContainerDiv> );
+        try {
+            return ( <HorizontalCardContainerDiv>
+                <HorizontalCardDivOrganizer>
+                    <HorizontalCard Movie={this.props.MovieList[0]}/>
+                </HorizontalCardDivOrganizer>
+                <HorizontalCardDivOrganizer>
+                    <HorizontalCard Movie={this.props.MovieList[1]}/>
+                    <HorizontalCard Movie={this.props.MovieList[2]}/>
+                </HorizontalCardDivOrganizer>
+                <HorizontalCardDivOrganizer>
+                    <HorizontalCard Movie={this.props.MovieList[3]}/>
+                    <HorizontalCard Movie={this.props.MovieList[4]}/>
+                </HorizontalCardDivOrganizer>
+            </HorizontalCardContainerDiv> );
+        } catch (error) {
+            console.log("reeee");
+        }
+
     }
 }
  

@@ -14,21 +14,27 @@ class HorizontalCard extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.Movie !== this.props.Movie) {
-            if(this.props.Movie["title"]){
-                this.setState({
-                    Title:this.props.Movie["title"],
-                    Description: this.props.Movie["overview"].substring(0,80) + "...",
-                    BackgoundImage: "url(" + "https://image.tmdb.org/t/p/w500"+ this.props.Movie["backdrop_path"] + ")" 
-                })
-            }else{
-                this.setState({
-                    Title:this.props.Movie["name"],
-                    Description: this.props.Movie["overview"].substring(0,80) + "...",
-                    BackgoundImage: "url(" + "https://image.tmdb.org/t/p/w500"+ this.props.Movie["backdrop_path"] + ")" 
-                })
-            }
+        try {
+            if (prevProps.Movie !== this.props.Movie) {
+                if(this.props.Movie["title"]){
+                    this.setState({
+                        Title:this.props.Movie["title"],
+                        Description: this.props.Movie["overview"].substring(0,80) + "...",
+                        BackgoundImage: "url(" + "https://image.tmdb.org/t/p/w500"+ this.props.Movie["backdrop_path"] + ")" 
+                    })
+                }else{
+                    this.setState({
+                        Title:this.props.Movie["name"],
+                        Description: this.props.Movie["overview"].substring(0,80) + "...",
+                        BackgoundImage: "url(" + "https://image.tmdb.org/t/p/w500"+ this.props.Movie["backdrop_path"] + ")" 
+                    })
+                }
         }
+            
+        } catch (error) {
+            console.log("bbbbbbbbbbbb" +error);
+        }
+        
     }
     render() { 
         return (<HorizontalCardDiv  style={{backgroundImage : this.state.BackgoundImage}}>
